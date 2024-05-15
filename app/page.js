@@ -4,6 +4,7 @@ import NavBar from "../components/Navbar";
 import { Button, Link } from "@nextui-org/react";
 
 import ProgressSlider from "@/components/Carousel";
+import Footer from "@/components/Footer";
 
 const data = {
   cards: [
@@ -34,18 +35,19 @@ export default function Home() {
       img: "tm-logo.png",
       desc: "talentmapp",
       buttonIcon: "/tm-logo.png",
-      content: "Aliqua cupidatat id duis irure sunt exercitation voluptate cillum. Consectetur ad ex do in reprehenderit est dolor elit et exercitation do ad. Voluptate excepteur magna ea ad aliquip ad."
+      content:
+        "Aliqua cupidatat id duis irure sunt exercitation voluptate cillum. Consectetur ad ex do in reprehenderit est dolor elit et exercitation do ad. Voluptate excepteur magna ea ad aliquip ad.",
     },
     {
       img: "/logos/gdn-logo.png",
       desc: "Go Digital Now",
       buttonIcon: "/logos/gdn-logo.png",
-      content: "Aliqua cupidatat id duis irure sunt exercitation voluptate cillum. Consectetur ad ex do in reprehenderit est dolor elit et exercitation do ad. Voluptate excepteur magna ea ad aliquip ad."
-
+      content:
+        "Aliqua cupidatat id duis irure sunt exercitation voluptate cillum. Consectetur ad ex do in reprehenderit est dolor elit et exercitation do ad. Voluptate excepteur magna ea ad aliquip ad.",
     },
   ];
   return (
-    <main className="flex min-h-screen flex-col items-center bg-white font-jakarta pb-24">
+    <main className="flex min-h-screen flex-col items-center bg-white font-jakarta">
       <div className="bg-[#5013AF] h-12 w-full flex items-center justify-center">
         <span className="text-[#DDD1F0] font-jakarta font-extralight">
           For product announcements and exclusive insights.{" "}
@@ -110,9 +112,29 @@ export default function Home() {
           ))}
         </div>
       </div>
-        <div className="mt-32 w-full ">
+      {/* <div className="mt-32 w-full ">
           <ProgressSlider items={items} />
+        </div> */}
+      <div className="flex items-center mt-32 w-11/12 bg-[#ede7f9] rounded-lg">
+        <div className="flex flex-col py-24 px-14 w-[50%]">
+          <span className="text-5xl font-bold">Get started!</span>
+          <span className="mt-3 text-lg font-light">
+            Are you ready to transform your professional network? Join
+            Talentmapp today.
+          </span>
+          <Button
+                as={Link}
+                href="#"
+                size="lg"
+                radius="sm"
+                className="bg-[#5013AF] w-1/4 py-6 mt-5 tracking-normal text-white"
+              >
+                Try Now
+              </Button>
         </div>
+        <img src="/get-started.png" alt="people" className="w-[50%]" />
+      </div>
+      <Footer />
     </main>
   );
 }
