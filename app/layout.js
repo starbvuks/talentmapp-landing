@@ -26,6 +26,13 @@ export default function RootLayout({ children }) {
           type="image/<generated>"
           sizes="<generated>"
         />
+        <link rel="icon" href="/favicon.ico" />
+        <meta property="og:image" content="/icon.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https:talentmapp.co" />
+        <meta name="twitter:card" content="summary_large_image" />
       </head>
       <NextUIProvider>
         <body className={inter.className}>{children}</body>
