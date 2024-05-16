@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import Image from "next/image";
+"use client";
+import { useRef } from "react";
 import NavBar from "../components/Navbar";
 import { Button, Link } from "@nextui-org/react";
 
@@ -30,6 +31,17 @@ const data = {
 };
 
 export default function Home() {
+  const footerRef = useRef(null);
+
+  // Function to handle scrolling to the footer
+  const scrollToFooter = () => {
+    // Check if the footer ref exists
+    if (footerRef.current) {
+      // Scroll to the footer section
+      footerRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const items = [
     {
       img: "tm-logo.png",
@@ -46,16 +58,26 @@ export default function Home() {
         "Aliqua cupidatat id duis irure sunt exercitation voluptate cillum. Consectetur ad ex do in reprehenderit est dolor elit et exercitation do ad. Voluptate excepteur magna ea ad aliquip ad.",
     },
   ];
+
   return (
     <main className="flex min-h-screen flex-col items-center bg-white font-jakarta">
-      <div className="bg-[#5013AF] h-12 w-full flex items-center justify-center">
-        <span className="text-[#DDD1F0] font-jakarta font-extralight">
-          For product announcements and exclusive insights.{" "}
-          <span className="text-white">Subscribe Now</span>
-        </span>
-        <img src="banner-overlay.svg" alt="overlay" className="absolute" />
+      <div className="bg-[#5013AF] h-12 w-full flex items-center justify-center relative">
+        <div className="">
+          <span className="text-[#DDD1F0] font-jakarta font-extralight">
+            For product announcements and exclusive insights.{" "}
+          </span>
+          <button
+            onClick={scrollToFooter}
+            size="lg"
+            radius="sm"
+            className="mx-2 tracking-normal text-white"
+          >
+            Join Waitlist
+          </button>
+        </div>
+        <img src="banner-overlay.svg" alt="overlay" className="-z-1 absolute pointer-events-none" />
       </div>
-      <NavBar />
+      <NavBar ref={footerRef} />
       {/* SECTION 1 */}
       <div className="flex items-center justify-between w-full px-16">
         <div className="w-[50%] py-24  flex flex-col text-6xl font-bold tracking-tight">
@@ -68,7 +90,7 @@ export default function Home() {
           </span>
           <Button
             as={Link}
-            href="#"
+            href="https://www.talentmapp.co"
             size="lg"
             radius="sm"
             className="bg-[#5013AF] w-1/3 mt-9 tracking-normal text-white"
@@ -123,18 +145,21 @@ export default function Home() {
             Talentmapp today.
           </span>
           <Button
-                as={Link}
-                href="#"
-                size="lg"
-                radius="sm"
-                className="bg-[#5013AF] w-1/4 py-6 mt-5 tracking-normal text-white"
-              >
-                Try Now
-              </Button>
+            as={Link}
+            href="#"
+            size="lg"
+            radius="sm"
+            className="bg-[#5013AF] w-1/4 py-6 mt-5 tracking-normal text-white"
+          >
+            Try Now
+          </Button>
         </div>
         <img src="/get-started.png" alt="people" className="w-[50%]" />
       </div>
-      <Footer />
+      <div className="w-full" ref={footerRef}>
+
+      <Footer  />
+      </div>
     </main>
   );
 }
